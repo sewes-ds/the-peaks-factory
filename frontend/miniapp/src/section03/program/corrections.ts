@@ -1,0 +1,26 @@
+import { defineSection03Node } from './types';
+
+export const SECTION03_CORRECTION_NODES = Object.freeze([
+  defineSection03Node('S03-C00', 'corrections', null, [], 'menu'),
+  defineSection03Node('S03-CF01', 'corrections', null, [], 'menu'),
+  defineSection03Node('S03-CF10', 'corrections', 'salary-correction-context', [], 'list'),
+  defineSection03Node('S03-CF11', 'corrections', 'salary-correction-context', ['employee_id', 'employee_shift_id'], 'menu'),
+  defineSection03Node('S03-CF12', 'corrections', null, ['employee_id', 'employee_shift_id', 'correction_mode', 'salary_correction_type_id'], 'form'),
+  defineSection03Node('S03-CF13', 'corrections', null, ['employee_id', 'employee_shift_id', 'correction_mode', 'salary_correction_type_id', 'amount_uzs'], 'form'),
+  defineSection03Node('S03-CF14', 'corrections', 'salary-correction-context', ['employee_id', 'employee_shift_id', 'correction_mode', 'salary_correction_type_id', 'amount_uzs', 'financial_correction_reason'], 'confirmation'),
+  defineSection03Node('S03-CF20', 'corrections', 'employees', [], 'list'),
+  defineSection03Node('S03-CF21', 'corrections', null, ['employee_id'], 'menu'),
+  defineSection03Node('S03-CF22', 'corrections', 'employee-completed-works', ['employee_id', 'period'], 'list'),
+  defineSection03Node('S03-CF23', 'corrections', 'employee-completed-work-card', ['employee_id', 'period', 'work_type', 'operation_id'], 'card'),
+  defineSection03Node('S03-CF24', 'corrections', null, ['employee_id', 'period', 'work_type', 'operation_id', 'salary_entry_id'], 'form'),
+  defineSection03Node('S03-CF25', 'corrections', 'employee-completed-work-card', ['employee_id', 'period', 'work_type', 'operation_id', 'salary_entry_id', 'reversal_reason'], 'confirmation'),
+  defineSection03Node('S03-CP00', 'corrections', null, [], 'menu'),
+  defineSection03Node('S03-CP10', 'corrections', 'employees', [], 'list'),
+  defineSection03Node('S03-CP11', 'corrections', null, [], 'menu'),
+  defineSection03Node('S03-CP12', 'corrections', 'production-completed-operations', ['period'], 'list'),
+  defineSection03Node('S03-CP13', 'corrections', 'production-completed-operations', ['period', 'work_type', 'operation_id'], 'menu'),
+  defineSection03Node('S03-CP14', 'corrections', null, ['period', 'work_type', 'operation_id', 'production_correction_mode'], 'form'),
+  defineSection03Node('S03-CP15', 'corrections', null, ['period', 'work_type', 'operation_id', 'production_correction_mode', 'correction_quantity'], 'form'),
+  defineSection03Node('S03-CP16', 'corrections', 'production-completed-operations', ['period', 'work_type', 'operation_id', 'production_correction_mode', 'correction_quantity', 'production_correction_reason'], 'confirmation'),
+  defineSection03Node('S03-CP20', 'corrections', 'machines', [], 'list'),
+]);

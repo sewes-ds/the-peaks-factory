@@ -1,0 +1,50 @@
+.section04-director {
+  min-height: 100vh;
+  padding: 96px 18px 24px;
+  background: #fff;
+  color: #0861bb;
+  box-sizing: border-box;
+}
+
+.section04-director__card {
+  width: min(100%, 354px);
+  margin: 0 auto;
+  padding: 20px 18px;
+  border: 2px solid #0861bb;
+  border-radius: 20px;
+  background: #eaf4ff;
+  box-shadow: 0 12px 24px rgba(17, 24, 39, 0.08);
+}
+
+.section04-director__code {
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  color: #0861bb;
+  margin-bottom: 10px;
+}
+
+.section04-director h1 {
+  margin: 0 0 10px;
+  font-size: 24px;
+  line-height: 1.12;
+  font-weight: 900;
+  color: #0861bb;
+}
+
+.section04-director p {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.32;
+  font-weight: 750;
+  color: #0861bb;
+}
+
+.section04-director__meta {
+  display: grid;
+  gap: 6px;
+  margin-top: 16px;
+  font-size: 13px;
+  font-weight: 800;
+  color: #5f6b7a;
+}

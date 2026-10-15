@@ -1,0 +1,2 @@
+import { describe, expect, it } from 'vitest'; import { formatElapsedDuration } from './duration';
+describe('duration', () => { it('formats exact minute input', () => { expect(formatElapsedDuration(0)).toBe('0 мин'); expect(formatElapsedDuration(60)).toBe('1 ч'); expect(formatElapsedDuration(80)).toBe('1 ч 20 мин'); expect(formatElapsedDuration(1441)).toBe('24 ч 1 мин'); }); it('rejects invalid values', () => { for (const value of [-1,1.5,NaN,Infinity,'1'] as unknown[]) expect(() => formatElapsedDuration(value as number)).toThrow('INVALID_DURATION_MINUTES'); }); });

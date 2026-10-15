@@ -1,0 +1,37 @@
+{
+  "name": "@peaks/miniapp",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "pnpm run verify:presentation-contract && tsc --noEmit && vite build && node scripts/assert-peaks-base.mjs",
+    "typecheck": "pnpm run verify:presentation-contract && tsc --noEmit",
+    "verify:presentation-contract": "node scripts/verify-manager-presentation-contract.mjs",
+    "test": "vitest run",
+    "test:platform-font-readiness": "node scripts/run-section03-production-gate.mjs",
+    "test:platform-geometry": "node scripts/run-platform-geometry-gate.mjs",
+    "test:activity-profiles:preview": "node scripts/run-activity-type-profiles-preview.mjs",
+    "test:browser-layout": "tsc --noEmit -p browser-tests/tsconfig.json && node browser-tests/run-layout.mjs",
+    "test:section02:browser": "tsc --noEmit -p section02-browser-tests/tsconfig.json && node section02-browser-tests/run.mjs",
+    "test:machine-qr:browser": "tsc --noEmit -p machine-qr-browser-tests/tsconfig.json && node machine-qr-browser-tests/run.mjs",
+    "test:sku-qr:browser": "tsc --noEmit -p sku-qr-browser-tests/tsconfig.json && node sku-qr-browser-tests/run.mjs",
+    "test:section03:production-gate": "node scripts/run-section03-production-gate.mjs",
+    "test:section03:owner-ui-pass01": "node scripts/run-section03-owner-ui-pass01-gate.mjs",
+    "assert:peaks-base": "node scripts/assert-peaks-base.mjs"
+  },
+  "dependencies": {
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
+  },
+  "devDependencies": {
+    "@types/node": "^26.0.0",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.2",
+    "jsdom": "^29.1.1",
+    "typescript": "^6.0.3",
+    "vite": "^8.0.16",
+    "vitest": "^4.1.9"
+  }
+}

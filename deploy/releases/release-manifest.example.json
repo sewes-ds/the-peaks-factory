@@ -1,0 +1,61 @@
+{
+  "schema_version": 2,
+  "example": true,
+  "release_id": "20260826T120000Z-111111111111",
+  "source_commit": "1111111111111111111111111111111111111111",
+  "created_at": "2026-08-26T12:00:00Z",
+  "assembly": {
+    "mode": "standard",
+    "tool_source_commit": "1111111111111111111111111111111111111111",
+    "tool_ci_run_id": "123456789",
+    "legacy_artifact_evidence_sha256": null
+  },
+  "toolchain": {
+    "node": "20.20.0",
+    "pnpm": "10.33.0",
+    "postgresql": "16"
+  },
+  "artifacts": {
+    "backend": {
+      "relative_path": "backend",
+      "tree_manifest_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "entry_count": 1
+    },
+    "frontend": {
+      "relative_path": "frontend",
+      "tree_manifest_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "entry_count": 1
+    }
+  },
+  "database": {
+    "baseline_commit": "1111111111111111111111111111111111111111",
+    "migration_packages": []
+  },
+  "verification": {
+    "source_method": "github-actions",
+    "ci_run_id": "123456789",
+    "ci_head_sha": "1111111111111111111111111111111111111111",
+    "required_jobs": [
+      "repository",
+      "database",
+      "backend",
+      "frontend"
+    ],
+    "legacy_runtime_evidence_sha256": null,
+    "backup_required": false,
+    "backup_manifest_sha256": null,
+    "rollback_rehearsed": true
+  },
+  "runtime": {
+    "release_root": "/srv/the-peaks-factory/releases/20260826T120000Z-111111111111",
+    "current_link": "/srv/the-peaks-factory/current",
+    "previous_link": "/srv/the-peaks-factory/previous",
+    "environment_file": "/etc/the-peaks-factory/backend.env"
+  },
+  "rollback": {
+    "strategy": "release",
+    "previous_release_id": "20260825T120000Z-000000000000",
+    "previous_manifest_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+    "database_restore_required": false
+  }
+}

@@ -1,0 +1,49 @@
+.peaks-presentation-form-field {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  align-self: stretch;
+  min-width: 0;
+  gap: var(--peaks-gap);
+}
+
+.peaks-presentation-form-field__label,
+.peaks-presentation-form-field__message {
+  overflow-wrap: anywhere;
+}
+
+.peaks-presentation-form-field__label {
+  font-size: var(--peaks-list-secondary-font-size);
+  font-weight: 800;
+}
+
+.peaks-presentation-form-field__control {
+  width: 100%;
+  height: auto;
+  min-height: var(--peaks-fixed-height);
+  min-width: 0;
+  box-sizing: border-box;
+  border: var(--peaks-button-border) solid var(--peaks-blue);
+  border-radius: var(--peaks-button-radius);
+  padding: var(--peaks-gap) var(--peaks-side-padding);
+  background: var(--peaks-white);
+  color: var(--peaks-ink);
+  font: inherit;
+  font-size: var(--peaks-comment-input-font-size);
+  overflow: visible;
+  overflow-wrap: anywhere;
+}
+
+.peaks-presentation-form-field__control--multiline {
+  min-height: var(--peaks-comment-input-min-height);
+  resize: vertical;
+  white-space: pre-wrap;
+}
+
+.peaks-presentation-form-field__control:disabled {
+  opacity: var(--peaks-feedback-disabled-opacity);
+}
+
+.peaks-presentation-form-field__message {
+  font-size: var(--peaks-comment-helper-font-size);
+}

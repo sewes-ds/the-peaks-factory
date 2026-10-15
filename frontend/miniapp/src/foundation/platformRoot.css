@@ -1,0 +1,29 @@
+/* PEAKS platform production-root geometry contract (PGR-1). */
+
+html {
+  --peaks-platform-root-geometry-contract: PGR-1;
+  inline-size: 100%;
+  min-inline-size: 0;
+  min-block-size: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scrollbar-gutter: auto;
+}
+
+body,
+#root {
+  inline-size: 100%;
+  min-inline-size: 0;
+  min-block-size: 100vh;
+  min-block-size: 100dvh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.miniapp-shell {
+  inline-size: 100%;
+  min-inline-size: 0;
+  box-sizing: border-box;
+}

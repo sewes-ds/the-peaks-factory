@@ -1,0 +1,398 @@
+/* PEAKS generic graph renderer styles shared by all sections. */
+
+/* PEAKS visual tokens are defined in foundation/peaksTheme.css. */
+
+.peaks-graph-viewport {
+  width: 100%;
+  min-height: 100dvh;
+  height: 100dvh;
+  margin: 0;
+  overflow: hidden;
+  background: var(--peaks-white);
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--peaks-blue);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.peaks-graph-viewport *,
+.peaks-graph-viewport *::before,
+.peaks-graph-viewport *::after {
+  box-sizing: border-box;
+}
+
+.peaks-graph-viewport :where(button) {
+  font: inherit;
+}
+
+.peaks-graph-logo-area {
+  flex: 0 0 var(--peaks-logo-area-height);
+  height: var(--peaks-logo-area-height);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: var(--peaks-logo-top-padding);
+  background: var(--peaks-white);
+}
+
+.peaks-graph-logo {
+  width: var(--peaks-logo-size);
+  height: var(--peaks-logo-size);
+  display: block;
+  object-fit: contain;
+}
+
+.peaks-graph-area {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 0 var(--peaks-side-padding) var(--peaks-bottom-padding);
+  background: var(--peaks-white);
+}
+
+.peaks-graph-fixed-top {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--peaks-gap);
+  padding-bottom: var(--peaks-gap);
+}
+
+.peaks-graph-scroll {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--peaks-gap);
+  scrollbar-width: none;
+}
+
+.peaks-graph-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.peaks-graph-fixed-bottom {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--peaks-fixed-gap);
+  padding-top: var(--peaks-gap);
+  background: var(--peaks-white);
+}
+
+.peaks-graph-object {
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+.peaks-graph-info-text {
+  min-height: var(--peaks-info-text-min-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 8px;
+  font-size: var(--peaks-info-text-font-size);
+  line-height: 1.16;
+  font-weight: 800;
+  color: var(--peaks-blue);
+  white-space: pre-line;
+}
+
+.peaks-graph-info-text--default {
+  color: var(--peaks-blue);
+}
+
+.peaks-graph-info-text--blue {
+  color: var(--peaks-blue);
+}
+
+.peaks-graph-production-card {
+  border-width: var(--peaks-button-border);
+  border-style: solid;
+  border-radius: var(--peaks-button-radius);
+  padding: 10px 14px;
+  min-height: var(--peaks-production-card-min-height);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.peaks-graph-production-card--green {
+  background: var(--peaks-light-green);
+  border-color: var(--peaks-green);
+  color: var(--peaks-green);
+}
+
+.peaks-graph-production-card--yellow {
+  background: var(--peaks-yellow-fill);
+  border-color: var(--peaks-yellow-border);
+  color: var(--peaks-yellow-text);
+}
+
+.peaks-graph-production-card--red {
+  background: var(--peaks-red-fill);
+  border-color: var(--peaks-red-border);
+  color: var(--peaks-red-text);
+}
+
+.peaks-graph-production-card--gray {
+  background: var(--peaks-gray-fill);
+  border-color: var(--peaks-gray-border);
+  color: var(--peaks-gray-text);
+}
+
+.peaks-graph-production-card__line {
+  margin: 0;
+  font-size: var(--peaks-production-card-font-size);
+  line-height: 1.22;
+  font-weight: 750;
+  overflow-wrap: anywhere;
+}
+
+.peaks-graph-production-card__line + .peaks-graph-production-card__line {
+  margin-top: 3px;
+}
+
+.peaks-graph-production-card__label,
+.peaks-graph-production-card__value {
+  color: currentColor;
+}
+
+.peaks-graph-message-text {
+  width: 100%;
+  border: 3px solid var(--peaks-blue);
+  border-radius: var(--peaks-button-radius);
+  background: var(--peaks-light-blue);
+  color: var(--peaks-blue);
+  padding: 18px 16px;
+  font-size: var(--peaks-message-text-font-size);
+  line-height: 1.24;
+  font-weight: 700;
+  text-align: center;
+  white-space: pre-line;
+}
+
+.peaks-action-button {
+  width: 100%;
+  min-height: var(--peaks-action-height);
+  border-width: var(--peaks-button-border);
+  border-style: solid;
+  border-radius: var(--peaks-button-radius);
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 55px 1fr;
+  align-items: center;
+  padding: 0 14px 0 0;
+  margin: 0;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: var(--peaks-action-font-size);
+  line-height: 1.05;
+  font-weight: 800;
+  text-align: center;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.peaks-action-button:disabled {
+  opacity: 0.58;
+  cursor: default;
+}
+
+.peaks-action-button--fixed55,
+.peaks-action-button--salary55 {
+  min-height: var(--peaks-fixed-height);
+  height: var(--peaks-fixed-height);
+  font-size: var(--peaks-fixed-action-font-size);
+}
+
+.peaks-action-button--primaryBlue {
+  background: var(--peaks-blue);
+  border-color: var(--peaks-blue);
+  color: var(--peaks-white);
+}
+
+.peaks-action-button--lightBlue {
+  background: var(--peaks-light-blue);
+  border-color: var(--peaks-blue);
+  color: var(--peaks-blue);
+}
+
+.peaks-action-button--outlineBlue {
+  background: var(--peaks-white);
+  border-color: var(--peaks-blue);
+  color: var(--peaks-blue);
+}
+
+.peaks-action-button--green {
+  background: var(--peaks-light-green);
+  border-color: var(--peaks-green);
+  color: var(--peaks-green);
+}
+
+.peaks-action-button--yellow {
+  background: var(--peaks-yellow-fill);
+  border-color: var(--peaks-yellow-border);
+  color: var(--peaks-yellow-text);
+}
+
+.peaks-action-button--gray {
+  background: var(--peaks-gray-fill);
+  border-color: var(--peaks-gray-border);
+  color: var(--peaks-gray-text);
+}
+
+.peaks-action-button--red {
+  background: var(--peaks-red-fill);
+  border-color: var(--peaks-red-border);
+  color: var(--peaks-red-text);
+}
+
+.peaks-action-button__icon-slot {
+  width: var(--peaks-icon-slot-width);
+  height: 100%;
+  min-height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.peaks-action-button__icon {
+  width: var(--peaks-icon-size);
+  height: var(--peaks-icon-size);
+  display: block;
+  object-fit: contain;
+}
+
+.peaks-action-button__label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  gap: 2px;
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: 800;
+  color: currentColor;
+  text-align: center;
+  overflow-wrap: normal;
+  word-break: normal;
+  white-space: normal;
+}
+
+.peaks-list-button {
+  width: 100%;
+  min-height: var(--peaks-action-height);
+  border-width: var(--peaks-button-border);
+  border-style: solid;
+  border-radius: var(--peaks-button-radius);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  padding: 8px 14px;
+  margin: 0;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: center;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.peaks-list-button:disabled {
+  opacity: 0.58;
+  cursor: default;
+}
+
+.peaks-list-button--blue {
+  background: var(--peaks-light-blue);
+  border-color: var(--peaks-blue);
+  color: var(--peaks-blue);
+}
+
+.peaks-list-button--green {
+  background: var(--peaks-light-green);
+  border-color: var(--peaks-green);
+  color: var(--peaks-green);
+}
+
+.peaks-list-button--yellow {
+  background: var(--peaks-yellow-fill);
+  border-color: var(--peaks-yellow-border);
+  color: var(--peaks-yellow-text);
+}
+
+.peaks-list-button--gray {
+  background: var(--peaks-gray-fill);
+  border-color: var(--peaks-gray-border);
+  color: var(--peaks-gray-text);
+}
+
+.peaks-list-button--red {
+  background: var(--peaks-red-fill);
+  border-color: var(--peaks-red-border);
+  color: var(--peaks-red-text);
+}
+
+.peaks-list-button__main {
+  font-size: var(--peaks-list-main-font-size);
+  line-height: 1.12;
+  font-weight: 800;
+  color: currentColor;
+}
+
+.peaks-list-button__secondary {
+  font-size: var(--peaks-list-secondary-font-size);
+  line-height: 1.15;
+  font-weight: 650;
+  color: currentColor;
+}
+
+.peaks-graph-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+
+/* S03 v17 graph binding additions */
+.peaks-list-button--whiteGray {
+  background: var(--peaks-white);
+  border-color: var(--peaks-gray-border);
+  color: var(--peaks-gray-text);
+}
+
+.peaks-list-button__main,
+.peaks-list-button__secondary {
+  white-space: pre-line;
+}
+
+.peaks-list-button--whiteGray .peaks-list-button__secondary {
+  color: var(--peaks-gray-text);
+}
+
+
+/* S03 v17 visual fix: buttons without icons use the full label width. */
+.peaks-action-button--noIcon {
+  grid-template-columns: 1fr;
+  padding: 0 14px;
+}
+
+
+/* S03 v17 visual fix: avoid per-letter wrapping in list/action labels. */
+.peaks-list-button__main,
+.peaks-list-button__secondary {
+  overflow-wrap: normal;
+  word-break: normal;
+}

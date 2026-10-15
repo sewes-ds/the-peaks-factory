@@ -1,0 +1,125 @@
+# Render with scripts/deploy/render-peaks-nginx.mjs. Never edit the rendered production copy in place.
+
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    server_name _;
+    return 444;
+}
+
+server {
+    listen 80;
+    listen [::]:80;
+    server_name {{DOMAIN}};
+    return 308 https://{{DOMAIN}}$request_uri;
+}
+
+server {
+    listen 443 ssl default_server;
+    listen [::]:443 ssl default_server;
+    server_name _;
+
+    ssl_certificate {{TLS_CERTIFICATE}};
+    ssl_certificate_key {{TLS_CERTIFICATE_KEY}};
+    return 421;
+}
+
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    server_name {{DOMAIN}};
+    server_tokens off;
+
+    ssl_certificate {{TLS_CERTIFICATE}};
+    ssl_certificate_key {{TLS_CERTIFICATE_KEY}};
+
+    location = /peaks {
+        return 308 /peaks/;
+    }
+
+    location = /peaks/health {
+        default_type application/json;
+        return 200 '{"status":"ok","app":"peaks"}';
+    }
+
+    location = /peaks/api {
+        proxy_pass http://127.0.0.1:3000/;
+        proxy_http_version 1.1;
+        proxy_set_header Host {{DOMAIN}};
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-Proto https;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Prefix /peaks;
+        proxy_read_timeout 120s;
+    }
+
+    location ^~ /peaks/api/ {
+        proxy_pass http://127.0.0.1:3000/;
+        proxy_http_version 1.1;
+        proxy_set_header Host {{DOMAIN}};
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-Proto https;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Prefix /peaks;
+        proxy_read_timeout 120s;
+        client_max_body_size 1m;
+    }
+
+    location ^~ /peaks/assets/ {
+        alias {{DEPLOYMENT_ROOT}}/current/frontend/assets/;
+        access_log off;
+        add_header Cache-Control "no-cache, must-revalidate, max-age=0" always;
+        add_header X-Content-Type-Options "nosniff" always;
+    }
+
+    location ^~ /peaks/ {
+        alias {{DEPLOYMENT_ROOT}}/current/frontend/;
+        index index.html;
+        try_files $uri $uri/ /peaks/index.html;
+        add_header Cache-Control "no-store, no-cache, must-revalidate, max-age=0" always;
+        add_header Pragma "no-cache" always;
+        add_header X-Content-Type-Options "nosniff" always;
+        add_header Referrer-Policy "no-referrer" always;
+        add_header X-Frame-Options "SAMEORIGIN" always;
+        add_header Content-Security-Policy "default-src 'self'; script-src 'self' https://telegram.org; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'self'; form-action 'self'" always;
+    }
+
+    location = /admin {
+        return 308 /admin/;
+    }
+
+    location ^~ /admin-api/ {
+        proxy_pass http://127.0.0.1:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Host {{DOMAIN}};
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-Proto https;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_read_timeout 30s;
+        client_max_body_size 64k;
+    }
+
+    location ^~ /admin/assets/ {
+        alias {{DEPLOYMENT_ROOT}}/current/frontend/admin/assets/;
+        access_log off;
+        add_header Cache-Control "no-cache, must-revalidate, max-age=0" always;
+        add_header X-Content-Type-Options "nosniff" always;
+    }
+
+    location ^~ /admin/ {
+        alias {{DEPLOYMENT_ROOT}}/current/frontend/admin/;
+        index index.html;
+        try_files $uri $uri/ /admin/index.html;
+        add_header Cache-Control "no-store, no-cache, must-revalidate, max-age=0" always;
+        add_header Pragma "no-cache" always;
+        add_header X-Content-Type-Options "nosniff" always;
+        add_header Referrer-Policy "no-referrer" always;
+        add_header X-Frame-Options "DENY" always;
+        add_header Permissions-Policy "camera=(), microphone=(), geolocation=()" always;
+        add_header Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'" always;
+    }
+
+    location / {
+        return 404;
+    }
+}

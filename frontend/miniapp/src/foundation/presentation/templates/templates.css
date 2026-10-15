@@ -1,0 +1,108 @@
+.peaks-presentation-screen-template {
+  --peaks-screen-safe-top: max(
+    var(--tg-content-safe-area-inset-top, 0px),
+    env(safe-area-inset-top, 0px)
+  );
+  --peaks-screen-safe-right: max(
+    var(--tg-content-safe-area-inset-right, 0px),
+    env(safe-area-inset-right, 0px)
+  );
+  --peaks-screen-safe-bottom: max(
+    var(--tg-content-safe-area-inset-bottom, 0px),
+    env(safe-area-inset-bottom, 0px)
+  );
+  --peaks-screen-safe-left: max(
+    var(--tg-content-safe-area-inset-left, 0px),
+    env(safe-area-inset-left, 0px)
+  );
+  position: fixed;
+  inset: 0 auto auto 0;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  max-width: 100vw;
+  height: var(--tg-viewport-stable-height, 100dvh);
+  max-height: 100dvh;
+  min-width: 0;
+  min-height: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: var(--peaks-white);
+}
+
+.peaks-presentation-screen-template__header,
+.peaks-presentation-screen-template__title,
+.peaks-presentation-screen-template__fixed-top,
+.peaks-presentation-screen-template__feedback,
+.peaks-presentation-screen-template__fixed-bottom {
+  flex: 0 0 auto;
+  min-width: 0;
+}
+
+.peaks-presentation-screen-template__title,
+.peaks-presentation-screen-template__fixed-top,
+.peaks-presentation-screen-template__feedback,
+.peaks-presentation-screen-template__fixed-bottom,
+.peaks-presentation-screen-template__scroll {
+  display: flex;
+  flex-direction: column;
+  gap: var(--peaks-gap);
+  padding-inline-start: max(var(--peaks-side-padding), var(--peaks-screen-safe-left));
+  padding-inline-end: max(var(--peaks-side-padding), var(--peaks-screen-safe-right));
+}
+
+.peaks-presentation-screen-template__header {
+  padding-block-start: var(--peaks-screen-safe-top);
+  padding-inline-start: max(var(--peaks-side-padding), var(--peaks-screen-safe-left));
+  padding-inline-end: max(var(--peaks-side-padding), var(--peaks-screen-safe-right));
+}
+
+.peaks-presentation-screen-template__feedback {
+  overflow-wrap: anywhere;
+}
+
+.peaks-presentation-screen-template__title {
+  color: var(--peaks-blue);
+  font-size: var(--peaks-info-text-font-size);
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+
+.peaks-presentation-screen-template__scroll {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
+}
+
+.peaks-presentation-screen-template__fixed-bottom {
+  padding-block-end: max(var(--peaks-bottom-padding), var(--peaks-screen-safe-bottom));
+}
+
+@supports not (height: 100dvh) {
+  .peaks-presentation-screen-template {
+    height: var(--tg-viewport-stable-height, 100vh);
+    max-height: 100vh;
+  }
+}
+
+.peaks-presentation-screen-template__fixed-bottom .peaks-presentation-action-button {
+  min-height: var(--peaks-fixed-height);
+}
+
+.peaks-presentation-template-item {
+  flex: 0 0 auto;
+  align-self: stretch;
+  min-width: 0;
+  height: auto;
+  overflow: visible;
+}
+
+.peaks-presentation-template-item > * {
+  min-width: 0;
+  max-width: 100%;
+}

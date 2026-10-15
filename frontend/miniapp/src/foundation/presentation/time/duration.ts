@@ -1,0 +1,2 @@
+import { TimePresentationError } from './timestamp';
+export function formatElapsedDuration(totalMinutes: number): string { if (!Number.isSafeInteger(totalMinutes) || totalMinutes < 0) throw new TimePresentationError('INVALID_DURATION_MINUTES'); const hours = Math.floor(totalMinutes / 60); const minutes = totalMinutes % 60; if (hours === 0) return `${minutes} \u043c\u0438\u043d`; if (minutes === 0) return `${hours} \u0447`; return `${hours} \u0447 ${minutes} \u043c\u0438\u043d`; }

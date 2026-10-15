@@ -1,0 +1,89 @@
+:root {
+  /* PEAKS foundation tokens — single source for Mini App visual layer. */
+
+  /* Brand colors */
+  --peaks-blue: #0861BB;
+  --peaks-white: #FFFFFF;
+  --peaks-light-blue: #EAF4FF;
+  --peaks-blue-soft: var(--peaks-light-blue);
+  --peaks-green: #2E8B57;
+  --peaks-light-green: #EAF8EE;
+  --peaks-yellow-border: #FFD230;
+  --peaks-yellow-fill: #FFF6CA;
+  --peaks-yellow-text: #D0872E;
+  --peaks-gray-border: #7B8794;
+  --peaks-gray-fill: #F1F1F1;
+  --peaks-gray-text: #4B5563;
+  --peaks-red-border: #E53935;
+  --peaks-red-fill: #FFF0F0;
+  --peaks-red-text: #B42318;
+
+  /* Base graph viewport */
+  --peaks-side-padding: 22px;
+  --peaks-logo-size: 80px;
+  --peaks-logo-top-padding: 9px;
+  --peaks-logo-bottom-gap: 7px;
+  --peaks-logo-area-height: calc(var(--peaks-logo-top-padding) + var(--peaks-logo-size) + var(--peaks-logo-bottom-gap));
+  --peaks-gap: 5px;
+  --peaks-fixed-gap: 10px;
+  --peaks-bottom-padding: 18px;
+
+  /* Action/list buttons */
+  --peaks-action-height: 70px;
+  --peaks-fixed-height: 55px;
+  --peaks-button-radius: 14px;
+  --peaks-button-border: 2px;
+  --peaks-action-font-size: 24px;
+  --peaks-fixed-action-font-size: 23px;
+  --peaks-list-main-font-size: 22px;
+  --peaks-list-secondary-font-size: 19px;
+  --peaks-icon-slot-width: 55px;
+  --peaks-icon-size: 45px;
+
+  /* Graph information objects */
+  --peaks-info-text-min-height: 58px;
+  --peaks-info-text-font-size: 23px;
+  --peaks-production-card-min-height: 90px;
+  --peaks-production-card-font-size: 18px;
+  --peaks-message-text-font-size: 19px;
+
+  /* Global presentation feedback */
+  --peaks-feedback-disabled-opacity: 0.58;
+  --peaks-feedback-spinner-duration: 0.8s;
+
+  /* Numeric input keyboard */
+  --peaks-numeric-object-gap: 10px;
+  --peaks-numeric-display-height: 55px;
+  --peaks-numeric-display-font-size: 24px;
+  --peaks-numeric-key-gap: 8px;
+  --peaks-numeric-key-height: 50px;
+  --peaks-numeric-key-font-size: 24px;
+  --peaks-numeric-control-font-size: 13px;
+
+  /* Comment input keyboard */
+  --peaks-comment-input-min-height: 112px;
+  --peaks-comment-input-max-height: 160px;
+  --peaks-comment-input-font-size: 19px;
+  --peaks-comment-helper-font-size: 15px;
+  /* Legacy/foundation compatibility aliases.
+     These keep older foundation primitives on the same active token source. */
+  --peaks-ink: #162033;
+  --peaks-muted: #667085;
+  --peaks-surface: var(--peaks-white);
+  --peaks-background: #f6f8fb;
+  --peaks-line: #d7deea;
+  --peaks-success-text: var(--peaks-green);
+  --peaks-success-bg: var(--peaks-light-green);
+  --peaks-warning-text: var(--peaks-yellow-text);
+  --peaks-warning-border: var(--peaks-yellow-border);
+  --peaks-warning-bg: var(--peaks-yellow-fill);
+  --peaks-critical-text: var(--peaks-red-text);
+  --peaks-critical-border: var(--peaks-red-border);
+  --peaks-critical-bg: var(--peaks-red-fill);
+  --peaks-neutral-text: var(--peaks-gray-text);
+  --peaks-neutral-border: var(--peaks-gray-border);
+  --peaks-neutral-bg: var(--peaks-gray-fill);
+  --peaks-bottom-action-height: var(--peaks-fixed-height);
+  --peaks-regular-action-height: var(--peaks-action-height);
+  --peaks-radius: var(--peaks-button-radius);
+}

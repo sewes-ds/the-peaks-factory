@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "font_family": "Arimo",
+  "total_woff2_bytes": 33472,
+  "canvas_widths_px_700_22": [
+    { "sample": "heading", "delta": 0 },
+    { "sample": "empty_state", "delta": 0 },
+    { "sample": "action", "delta": 0 },
+    { "sample": "notification", "delta": 0 },
+    { "sample": "long_name", "delta": 0 },
+    { "sample": "long_code", "delta": 0 }
+  ],
+  "dom_block_heights_px_at_300_width": [
+    { "sample": "heading", "arimo": 44.39, "legacy_stack": 44.39 },
+    { "sample": "empty_state", "arimo": 63.59, "legacy_stack": 63.59 },
+    { "sample": "action", "arimo": 70.78, "legacy_stack": 70.78 },
+    { "sample": "notification", "arimo": 70.78, "legacy_stack": 70.78 },
+    { "sample": "detail_card", "arimo": 196.75, "legacy_stack": 196.75 }
+  ],
+  "horizontal_overflow_samples": 0,
+  "render_environment": {
+    "cumulative_layout_shift": 0
+  }
+}

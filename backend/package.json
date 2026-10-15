@@ -1,0 +1,44 @@
+{
+  "name": "@the-peaks-factory/backend",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/clean-dist.mjs && tsc -p tsconfig.build.json",
+    "dev": "tsx watch src/server.ts",
+    "generate:machine-qr-labels": "tsx scripts/generate-machine-qr-labels.ts",
+    "generate:sku-qr-labels": "tsx scripts/generate-sku-qr-labels.ts",
+    "presentation-contract:generate": "tsx scripts/generate-manager-presentation-contract.ts",
+    "runtime-api:verify": "node scripts/verify-runtime-api-map.mjs",
+    "security:scan": "node scripts/security-scan.mjs",
+    "start": "node dist/src/server.js",
+    "test": "vitest run",
+    "test:activity-profiles:postgres": "tsx tests/integration/activity_type_profiles_postgres_harness.ts",
+    "test:admin-auth:postgres": "tsx tests/integration/admin_auth_postgres_harness.ts",
+    "test:notification-delivery:postgres": "tsx tests/integration/notification_delivery_postgres_harness.ts",
+    "test:r3-catalog:postgres": "tsx tests/integration/r3_catalog_migration_postgres_harness.ts",
+    "test:security": "pnpm run security:scan",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "verify": "pnpm run runtime-api:verify && pnpm run security:scan && pnpm run typecheck && pnpm run test && pnpm run build"
+  },
+  "dependencies": {
+    "fastify": "^5.3.3",
+    "fastify-plugin": "^5.0.1",
+    "pg": "^8.16.0",
+    "pino": "^9.7.0",
+    "qrcode": "^1.5.4",
+    "zod": "^3.25.42"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.29",
+    "@types/pg": "^8.15.2",
+    "@types/qrcode": "^1.5.6",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3",
+    "vitest": "^3.1.4"
+  },
+  "engines": {
+    "node": ">=20.20.0",
+    "pnpm": ">=10.0.0"
+  }
+}

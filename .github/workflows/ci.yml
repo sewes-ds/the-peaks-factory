@@ -1,0 +1,128 @@
+name: Repository verification
+
+on:
+  workflow_dispatch:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  dependency-review:
+    name: Dependency review
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/dependency-review-action@v4
+
+  repository:
+    name: Documentation and repository hygiene
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "20.20.0"
+      - run: node scripts/verify-documentation.mjs
+      - run: node scripts/verify-release-contract.mjs --allow-example deploy/releases/release-manifest.example.json
+      - run: node --test scripts/verify-release-contract.test.mjs
+      - run: node --test scripts/releases/release-tools.test.mjs
+      - run: node --test scripts/deploy/render-peaks-nginx.test.mjs
+      - run: node --test scripts/deploy/telegram-domain-tools.test.mjs
+      - run: node --test db/migrations/20260828_001_machine_sku_qr_catalog/scripts/migration-tools.test.mjs
+      - run: node --test db/migrations/20260829_001_sku_qr_tokens/scripts/package-tools.test.mjs
+      - run: node --test db/migrations/20260829_001_sku_qr_tokens/scripts/production-tools.test.mjs
+      - run: node scripts/verify-repository-hygiene.mjs
+
+  database:
+    name: PostgreSQL baseline contract
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_DB: peaks_verify
+          POSTGRES_HOST_AUTH_METHOD: trust
+        options: >-
+          --health-cmd "pg_isready -U postgres -d peaks_verify"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 12
+        ports:
+          - 5432:5432
+    steps:
+      - uses: actions/checkout@v6
+      - name: Verify canonical SQL package
+        env:
+          PEAKS_DB_ADMIN_URL: postgresql://postgres@127.0.0.1:5432/peaks_verify
+          PEAKS_ALLOW_EPHEMERAL_DATABASE_VERIFY: "1"
+        run: scripts/verify-database-baseline.sh
+
+  backend:
+    name: Backend contract, security, tests, and build
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - uses: actions/checkout@v6
+      - uses: pnpm/action-setup@v6
+        with:
+          version: "10.33.0"
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "20.20.0"
+          cache: pnpm
+          cache-dependency-path: backend/pnpm-lock.yaml
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run verify
+      - run: node ../scripts/verify-domain-portability.mjs --backend-dist dist
+
+  frontend:
+    name: Frontend tests, contracts, typecheck, and build
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend/miniapp
+    steps:
+      - uses: actions/checkout@v6
+      - uses: pnpm/action-setup@v6
+        with:
+          version: "10.33.0"
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "20.20.0"
+          cache: pnpm
+          cache-dependency-path: |
+            frontend/miniapp/pnpm-lock.yaml
+            frontend/admin/pnpm-lock.yaml
+      - name: Install Mini App dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Test Mini App
+        run: pnpm run test
+      - name: Typecheck Mini App
+        run: pnpm run typecheck
+      - name: Build Mini App
+        run: pnpm run build
+      - name: Install Admin Web dependencies
+        working-directory: frontend/admin
+        run: pnpm install --frozen-lockfile
+      - name: Verify Admin Web
+        working-directory: frontend/admin
+        run: pnpm run verify
+      - name: Verify domain-neutral frontend artifacts
+        working-directory: frontend/miniapp
+        run: node ../../scripts/verify-domain-portability.mjs --miniapp-dist dist --admin-dist ../admin/dist
+      - name: Browser-test Admin Web
+        working-directory: frontend/admin
+        run: pnpm run test:browser

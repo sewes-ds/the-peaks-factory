@@ -1,0 +1,248 @@
+/* Section03 v17 graph binding styles.
+   Colors are consumed only through PEAKS foundation tokens from peaksTheme.css. */
+
+.peaks-s03-screen {
+  background: var(--peaks-white);
+}
+
+.peaks-s03-screen--v17-bound .peaks-graph-message-text {
+  white-space: pre-line;
+}
+
+/* S03-N01 v17 bound tiles remain readable but deliberately inert until their
+   graph branches are connected. The selector stays scoped to legacy S03. */
+.peaks-s03-screen--v17-bound .peaks-list-button__secondary {
+  white-space: pre-line;
+}
+
+.peaks-s03-screen--v17-bound .peaks-graph-list-lines {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  white-space: pre-line;
+}
+
+.peaks-s03-screen--v17-bound .peaks-graph-list-line {
+  display: block;
+  line-height: 1.15;
+  font-weight: 750;
+}
+
+.peaks-s03-screen--v17-bound .peaks-graph-list-line--blue { color: var(--peaks-blue); }
+.peaks-s03-screen--v17-bound .peaks-graph-list-line--green { color: var(--peaks-green); }
+.peaks-s03-screen--v17-bound .peaks-graph-list-line--yellow { color: var(--peaks-yellow-text); }
+.peaks-s03-screen--v17-bound .peaks-graph-list-line--red { color: var(--peaks-red-text); }
+.peaks-s03-screen--v17-bound .peaks-graph-list-line--gray { color: var(--peaks-gray-text); }
+
+.peaks-s03-screen--v17-bound .peaks-s03-main-tile--unavailable:disabled {
+  opacity: 1;
+  cursor: default;
+}
+
+.peaks-s03-screen--v17-bound .peaks-s03-main-tile--unavailable:disabled:hover,
+.peaks-s03-screen--v17-bound .peaks-s03-main-tile--unavailable:disabled:active {
+  filter: none;
+  transform: none;
+}
+
+.peaks-s03-date-input-object {
+  width: 100%;
+}
+
+.peaks-s03-date-input-label {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: var(--peaks-blue);
+  font-size: 22px;
+  line-height: 1.2;
+  font-weight: 800;
+  text-align: center;
+}
+
+.peaks-s03-date-input {
+  width: 100%;
+  height: var(--peaks-fixed-height);
+  border: 3px solid var(--peaks-blue);
+  border-radius: var(--peaks-button-radius);
+  background: var(--peaks-white);
+  color: var(--peaks-blue);
+  padding: 0 14px;
+  font: inherit;
+  font-size: 22px;
+  font-weight: 800;
+  text-align: center;
+}
+
+/* S03-AW01 requested additional-work row token contract:
+   background white, grey border, grey text. The active row primitive lives in
+   foundation/graphRenderer, but Section03 keeps the v17 token dependency explicit
+   for contract tests and future screen-specific wrappers. */
+.peaks-s03-requested-additional-work-token-contract {
+  background: var(--peaks-white);
+  border-color: var(--peaks-gray-border);
+  color: var(--peaks-gray-text);
+}
+
+
+/* S03-N01 v17: tile background is separate from per-line state indication. */
+.peaks-s03-main-tile-lines {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  white-space: pre-line;
+}
+
+.peaks-s03-main-tile-line {
+  display: block;
+  line-height: 1.15;
+  font-weight: 750;
+}
+
+.peaks-s03-main-tile-line--blue {
+  color: var(--peaks-blue);
+}
+
+.peaks-s03-main-tile-line--green {
+  color: var(--peaks-green);
+}
+
+.peaks-s03-main-tile-line--red {
+  color: var(--peaks-red-text);
+}
+
+.peaks-s03-main-tile-line--yellow {
+  color: var(--peaks-yellow-text);
+}
+
+.peaks-s03-main-tile-line--gray {
+  color: var(--peaks-gray-text);
+}
+
+
+/* S03 v17 machine card layout fix:
+   labels are underlined, values are rendered on the next line. */
+.peaks-s03-screen--v17-bound .peaks-graph-production-card__line {
+  margin: 0 0 10px;
+}
+
+.peaks-s03-screen--v17-bound .peaks-graph-production-card__label {
+  display: block;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  margin-bottom: 2px;
+}
+
+.peaks-s03-screen--v17-bound .peaks-graph-production-card__value {
+  display: block;
+}
+
+
+/* S03 v17 compact fixed screen title:
+   title belongs to the fixed top area and must sit close to the logo,
+   leaving maximum height for the scroll field below it. */
+.peaks-s03-screen--v17-bound .peaks-graph-fixed-top {
+  gap: 0;
+  padding-bottom: 8px;
+}
+
+.peaks-s03-screen--v17-bound .peaks-graph-info-text {
+  min-height: 46px;
+  padding: 0 8px 4px;
+  align-items: flex-start;
+}
+
+
+/* S03_V17_COMPACT_SCROLL_CONTRACT_V3
+   Compact fixed top for Section03: title close to logo, scroll starts immediately,
+   fixed bottom does not cover the last scroll row. */
+.peaks-s03-screen--v17-bound {
+  --peaks-logo-size: 62px;
+  --peaks-logo-top-padding: 4px;
+  --peaks-logo-bottom-gap: 0px;
+  --peaks-logo-area-height: calc(var(--peaks-logo-top-padding) + var(--peaks-logo-size) + var(--peaks-logo-bottom-gap));
+  --peaks-info-text-min-height: 32px;
+  --peaks-info-text-font-size: 21px;
+  --peaks-gap: 6px;
+  --peaks-bottom-padding: 6px;
+}
+
+.peaks-s03-screen--v17-bound .peaks-graph-logo-area {
+  flex-basis: var(--peaks-logo-area-height);
+  height: var(--peaks-logo-area-height);
+}
+
+.peaks-s03-screen--v17-bound .peaks-graph-fixed-top {
+  gap: 0;
+  padding-bottom: 2px;
+}
+
+.peaks-s03-screen--v17-bound .peaks-graph-info-text {
+  min-height: var(--peaks-info-text-min-height);
+  padding: 0 8px 0;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.1;
+}
+
+.peaks-s03-screen--v17-bound .peaks-graph-scroll {
+  gap: 7px;
+  padding-top: 0;
+  padding-bottom: calc(var(--peaks-fixed-height) + 18px);
+  scroll-padding-top: 0;
+  scroll-padding-bottom: calc(var(--peaks-fixed-height) + 18px);
+}
+
+.peaks-s03-screen--v17-bound .peaks-graph-fixed-bottom {
+  padding-top: 6px;
+  gap: 7px;
+}
+
+.peaks-s03-screen--v17-bound[data-node-id="S03-M01"] .peaks-list-button {
+  min-height: 64px;
+}
+
+/* WP6 global primitives inside the temporary Section03 v17 shell. */
+.peaks-s03-screen--v17-bound .peaks-presentation-control-list-button__secondary,
+.peaks-s03-screen--v17-bound .peaks-presentation-state-list-button__secondary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+}
+
+.peaks-s03-screen--v17-bound .peaks-presentation-summary-line {
+  display: block;
+  line-height: 1.15;
+  font-weight: 750;
+}
+
+.peaks-s03-screen--v17-bound[data-node-id="S03-M01"]
+  .peaks-presentation-state-list-button__secondary {
+  white-space: pre-line;
+}
+
+.peaks-s03-screen--v17-bound .peaks-presentation-card__line {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.peaks-s03-screen--v17-bound .peaks-presentation-card__label {
+  display: block;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.peaks-s03-screen--v17-bound .peaks-presentation-card__value {
+  display: block;
+}
+
+.peaks-s03-screen--v17-bound[data-node-id="S03-M01"]
+  .peaks-presentation-control-list-button,
+.peaks-s03-screen--v17-bound[data-node-id="S03-M01"]
+  .peaks-presentation-state-list-button {
+  min-height: 64px;
+}

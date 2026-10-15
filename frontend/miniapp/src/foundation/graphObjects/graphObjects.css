@@ -1,0 +1,237 @@
+.peaks-numeric-input-keyboard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--peaks-numeric-object-gap);
+}
+
+.peaks-numeric-input-keyboard__display {
+  height: var(--peaks-numeric-display-height);
+  border: 3px solid var(--peaks-blue);
+  border-radius: var(--peaks-button-radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--peaks-blue);
+  background: var(--peaks-white);
+  font-size: var(--peaks-numeric-display-font-size);
+  line-height: 1;
+  font-weight: 800;
+  text-align: center;
+}
+
+.peaks-numeric-input-keyboard__value--placeholder {
+  opacity: 0.62;
+}
+
+.peaks-numeric-input-keyboard__keys {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--peaks-numeric-key-gap);
+}
+
+.peaks-numeric-input-keyboard__key {
+  height: var(--peaks-numeric-key-height);
+  border: 3px solid var(--peaks-blue);
+  border-radius: 12px;
+  background: var(--peaks-white);
+  color: var(--peaks-blue);
+  font-size: var(--peaks-numeric-key-font-size);
+  line-height: 1;
+  font-weight: 800;
+  text-align: center;
+  font-family: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.peaks-numeric-input-keyboard__key--control {
+  font-size: var(--peaks-numeric-control-font-size);
+  line-height: 1.04;
+  font-weight: 800;
+}
+
+.peaks-numeric-input-keyboard__key:disabled {
+  opacity: 0.58;
+}
+
+.peaks-comment-input-keyboard {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.peaks-comment-input-keyboard__field {
+  width: 100%;
+  min-height: var(--peaks-comment-input-min-height);
+  max-height: var(--peaks-comment-input-max-height);
+  resize: vertical;
+  overflow-y: auto;
+  border: 3px solid var(--peaks-blue);
+  border-radius: var(--peaks-button-radius);
+  background: var(--peaks-white);
+  color: var(--peaks-blue);
+  padding: 12px 14px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: var(--peaks-comment-input-font-size);
+  line-height: 1.22;
+  font-weight: 700;
+  outline: none;
+}
+
+.peaks-comment-input-keyboard__field::placeholder {
+  color: var(--peaks-blue);
+  opacity: 0.58;
+}
+
+.peaks-comment-input-keyboard__field:disabled {
+  opacity: 0.58;
+}
+
+.peaks-comment-input-keyboard__helper {
+  color: var(--peaks-gray-text);
+  font-size: var(--peaks-comment-helper-font-size);
+  line-height: 1.2;
+  font-weight: 650;
+  text-align: center;
+}
+
+/* PEAKS_COMMENT_ARCHIVE_KEYBOARD_START */
+.peaks-comment-input-keyboard__native-bridge {
+  display: none;
+}
+
+.keyboard-placeholder.inline-keyboard {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.keyboard-row {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  width: 100%;
+}
+
+.keyboard-key {
+  min-width: 28px;
+  height: 34px;
+  border: 2px solid var(--peaks-blue);
+  border-radius: 9px;
+  background: var(--peaks-white);
+  color: var(--peaks-blue);
+  font-family: inherit;
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1;
+  text-align: center;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.keyboard-row-digits .keyboard-key {
+  min-width: 30px;
+}
+
+.keyboard-row-letters .keyboard-key {
+  min-width: 28px;
+}
+
+.keyboard-shift,
+.keyboard-backspace {
+  min-width: 34px;
+}
+
+.keyboard-shift.is-active {
+  background: var(--peaks-blue-soft);
+}
+
+.keyboard-row-bottom {
+  display: grid;
+  grid-template-columns: 46px 1fr 46px;
+  gap: 6px;
+}
+
+.keyboard-row-bottom .keyboard-key {
+  width: 100%;
+  height: 38px;
+}
+
+.keyboard-space {
+  min-width: 170px;
+}
+
+.keyboard-key:disabled {
+  opacity: 0.58;
+}
+/* PEAKS_COMMENT_ARCHIVE_KEYBOARD_END */
+
+/* PEAKS_COMMENT_KEYBOARD_FIT_FIX_START */
+.peaks-comment-input-keyboard,
+.keyboard-placeholder.inline-keyboard {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.keyboard-placeholder.inline-keyboard {
+  gap: 6px;
+}
+
+.keyboard-row {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  display: grid;
+  justify-content: stretch;
+  gap: 0;
+}
+
+.keyboard-row-digits {
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+}
+
+.keyboard-row-letters {
+  grid-template-columns: repeat(11, minmax(0, 1fr));
+}
+
+.keyboard-row-bottom {
+  grid-template-columns: 58px minmax(0, 1fr) 58px;
+  gap: 0;
+}
+
+.keyboard-key,
+.keyboard-row-digits .keyboard-key,
+.keyboard-row-letters .keyboard-key,
+.keyboard-row-bottom .keyboard-key,
+.keyboard-shift,
+.keyboard-backspace,
+.keyboard-space {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  border-radius: 9px;
+}
+
+.keyboard-key {
+  height: 38px;
+  padding: 0;
+  font-size: 18px;
+}
+
+.keyboard-row-bottom .keyboard-key {
+  height: 40px;
+}
+
+.keyboard-space {
+  min-width: 0;
+}
+
+.peaks-comment-input-keyboard__field.comment-field,
+.peaks-comment-input-keyboard__field.comment-input-field {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+/* PEAKS_COMMENT_KEYBOARD_FIT_FIX_END */

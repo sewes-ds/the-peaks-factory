@@ -1,0 +1,24 @@
+[Unit]
+Description=PEAKS Backend API immutable release runtime
+After=network.target postgresql.service
+Wants=postgresql.service
+
+[Service]
+Type=simple
+User=devops
+Group=devops
+WorkingDirectory=/srv/the-peaks-factory/current/backend
+EnvironmentFile=/etc/the-peaks-factory/backend.env
+Environment=HOST=127.0.0.1
+Environment=PORT=3000
+ExecStartPre=/usr/bin/test -L /srv/the-peaks-factory/current
+ExecStartPre=/usr/bin/test -f /srv/the-peaks-factory/current/release-manifest.json
+ExecStartPre=/usr/bin/test -f /srv/the-peaks-factory/current/backend/dist/src/server.js
+ExecStart=/usr/bin/node /srv/the-peaks-factory/current/backend/dist/src/server.js
+Restart=on-failure
+RestartSec=5
+KillSignal=SIGTERM
+TimeoutStopSec=20
+
+[Install]
+WantedBy=multi-user.target

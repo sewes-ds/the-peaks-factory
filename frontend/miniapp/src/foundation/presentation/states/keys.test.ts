@@ -1,0 +1,3 @@
+import { describe, expect, it } from 'vitest';
+import { STATE_PRESENTATION_KEYS, STATE_PRESENTATION_SURFACES } from './keys';
+describe('state keys', () => { it('is exact and frozen', () => { expect(STATE_PRESENTATION_KEYS).toEqual(['state-info','state-positive','state-warning','state-danger','state-neutral','state-positive-neutral-context','state-inactive','state-info-outline','state-neutral-outline','state-neutral-content','state-warning-field','state-neutral-result','state-info-table']); expect(STATE_PRESENTATION_SURFACES).toEqual(['list-button','entity-row','card','summary-line','message']); expect(Object.isFrozen(STATE_PRESENTATION_KEYS)).toBe(true); expect(Object.isFrozen(STATE_PRESENTATION_SURFACES)).toBe(true); }); });

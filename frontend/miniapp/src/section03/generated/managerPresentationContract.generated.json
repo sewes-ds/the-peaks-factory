@@ -1,0 +1,146 @@
+{
+  "schema_version": 1,
+  "contract_id": "manager-presentation-tuples-v1",
+  "vectors": [
+    {
+      "family": "machine",
+      "tuple": {
+        "ui_state": "idle",
+        "ui_variant": "light_blue"
+      }
+    },
+    {
+      "family": "machine",
+      "tuple": {
+        "ui_state": "running",
+        "ui_variant": "green"
+      }
+    },
+    {
+      "family": "machine",
+      "tuple": {
+        "ui_state": "warning",
+        "ui_variant": "yellow"
+      }
+    },
+    {
+      "family": "machine",
+      "tuple": {
+        "ui_state": "critical",
+        "ui_variant": "red"
+      }
+    },
+    {
+      "family": "employee",
+      "tuple": {
+        "ui_state": "shift_not_started",
+        "ui_variant": "white"
+      }
+    },
+    {
+      "family": "employee",
+      "tuple": {
+        "ui_state": "shift_idle",
+        "ui_variant": "light_blue"
+      }
+    },
+    {
+      "family": "employee",
+      "tuple": {
+        "ui_state": "production",
+        "ui_variant": "green"
+      }
+    },
+    {
+      "family": "employee",
+      "tuple": {
+        "ui_state": "break",
+        "ui_variant": "yellow"
+      }
+    },
+    {
+      "family": "employee",
+      "tuple": {
+        "ui_state": "operational_down",
+        "ui_variant": "yellow"
+      }
+    },
+    {
+      "family": "employee",
+      "tuple": {
+        "ui_state": "critical_down",
+        "ui_variant": "red"
+      }
+    },
+    {
+      "family": "employee",
+      "tuple": {
+        "ui_state": "additional_work",
+        "ui_variant": "grey"
+      }
+    },
+    {
+      "family": "additional_work",
+      "tuple": {
+        "status": "requested",
+        "ui_variant": "grey"
+      }
+    },
+    {
+      "family": "additional_work",
+      "tuple": {
+        "status": "approved",
+        "ui_variant": "grey"
+      }
+    },
+    {
+      "family": "additional_work",
+      "tuple": {
+        "status": "active",
+        "ui_variant": "green"
+      }
+    },
+    {
+      "family": "additional_work",
+      "tuple": {
+        "status": "waiting_accrual",
+        "ui_variant": "green"
+      }
+    },
+    {
+      "family": "notification",
+      "tuple": {
+        "task_kind": "ADDITIONAL_WORK_REQUESTED",
+        "ui_color_token": "gray",
+        "ui_variant": "grey"
+      }
+    },
+    {
+      "family": "notification",
+      "tuple": {
+        "task_kind": "ADDITIONAL_WORK_WAITING_ACCRUAL",
+        "ui_color_token": "green",
+        "ui_variant": "green"
+      }
+    },
+    {
+      "family": "notification",
+      "tuple": {
+        "task_kind": "CRITICAL_DOWNTIME_OPEN",
+        "ui_color_token": "red",
+        "ui_variant": "red"
+      }
+    },
+    {
+      "family": "notification",
+      "tuple": {
+        "task_kind": "OPERATIONAL_DOWNTIME_OVER_15_MIN",
+        "ui_color_token": "yellow",
+        "ui_variant": "yellow"
+      }
+    }
+  ],
+  "producer_commit": "1d905143164e8e0067a024376c4e96487cbbbc7c",
+  "fingerprint_algorithm": "sha256",
+  "fingerprint": "217ed67f02f14a23d45f15fee2cabf20b2274942725201afc4970242a5c69b86"
+}

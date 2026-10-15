@@ -1,0 +1,53 @@
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.crt
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Node / frontend
+node_modules/
+dist/
+build/
+.next/
+.vite/
+coverage/
+.dist*/
+.demo.rollback*/
+.browser-evidence/
+
+# Logs and runtime
+*.log
+logs/
+tmp/
+*.pid
+*.dump
+*.backup
+
+# Local editor / OS files
+.DS_Store
+.idea/
+.vscode/
+
+# Generated archives
+*.tar.gz
+*.zip
+
+# Local agent/audit work artifacts
+.agent_work/
+.audit/
+.env.backup*
+
+# Private certificate/key bundles
+*.p12
+*.pfx

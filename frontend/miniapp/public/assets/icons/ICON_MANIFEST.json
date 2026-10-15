@@ -1,0 +1,28 @@
+{
+  "canonicalDirectory": "frontend/miniapp/public/assets/icons/",
+  "iconSizePx": 45,
+  "policy": {
+    "scope": "shared Mini App action icons",
+    "naming": "action semantic name, not screen or section name",
+    "noSectionDuplicates": true,
+    "replaceByFilename": true
+  },
+  "icons": [
+    { "file": "back.svg", "meaning": "Назад", "placeholderDotFill": "#FFFFFF" },
+    { "file": "start_shift.svg", "meaning": "Начать смену", "placeholderDotFill": "#0861BB" },
+    { "file": "finish_shift.svg", "meaning": "Завершить смену", "placeholderDotFill": "#EAF8EE" },
+    { "file": "start_production.svg", "meaning": "Начать производство", "placeholderDotFill": "#0861BB" },
+    { "file": "finish_production.svg", "meaning": "Завершить производство", "placeholderDotFill": "#EAF8EE" },
+    { "file": "start_break.svg", "meaning": "Начать перерыв", "placeholderDotFill": "#EAF4FF" },
+    { "file": "finish_break.svg", "meaning": "Завершить перерыв", "placeholderDotFill": "#FFF6CA" },
+    { "file": "start_downtime.svg", "meaning": "Начать простой", "placeholderDotFill": "#EAF4FF" },
+    { "file": "finish_downtime.svg", "meaning": "Завершить простой", "placeholderDotFill": "#EAF8EE" },
+    { "file": "additional_work.svg", "meaning": "Допработа", "placeholderDotFill": "#F1F1F1" },
+    { "file": "salary.svg", "meaning": "Зарплата", "placeholderDotFill": "#FFFFFF" },
+    { "file": "scan_qr.svg", "meaning": "Сканировать QR", "placeholderDotFill": "#0861BB" },
+    { "file": "select_from_list.svg", "meaning": "Выбрать из списка", "placeholderDotFill": "#EAF4FF" },
+    { "file": "select_machine_from_list.svg", "meaning": "Выбрать станок из списка", "placeholderDotFill": "#EAF4FF" },
+    { "file": "select_sku_from_list.svg", "meaning": "Выбрать SKU из списка", "placeholderDotFill": "#EAF4FF" },
+    { "file": "placeholder.svg", "meaning": "Generic placeholder", "placeholderDotFill": "#EAF4FF" }
+  ]
+}
