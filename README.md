@@ -1,5 +1,9 @@
 # The Peaks Factory
 
+<p align="center">
+  <img src="docs/assets/the-peaks-factory-social-preview.jpg" alt="The Peaks Factory: Telegram Mini App screens and production equipment" width="960">
+</p>
+
 Production accounting system for a factory: Telegram Mini App for operators and managers, a separate
 administration web application, a Fastify API, and a PostgreSQL business core.
 
