@@ -59,6 +59,11 @@ Runtime rollback restores the previous unit as well as the previous immutable ap
 example runs the backend from the `current` immutable release pointer and reads protected configuration
 from `/etc/the-peaks-factory/`.
 
+The Mini App HTML may be framed only by its own origin and `https://web.telegram.org`, which is required
+for Telegram Web clients. Do not add `X-Frame-Options` to `/peaks/`: it cannot express that cross-origin
+allowlist and blocks the Mini App in Telegram Web. Keep the separate `/admin/` surface protected with
+`X-Frame-Options: DENY` and CSP `frame-ancestors 'none'`.
+
 ## Release gate
 
 Before production activation:
