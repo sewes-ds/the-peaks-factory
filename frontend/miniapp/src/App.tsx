@@ -1,10 +1,10 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { ApiClient } from './foundation/apiClient';
 import { getAppEntrypoint, type AppEntrypointResponse } from './foundation/appEntrypoint';
 import { Section01AuthApp } from './section01/Section01AuthApp';
 import { technicalFailureRoute } from './section01/authFlow';
 import type { Section01RouteState } from './section01/authTypes';
-import { getTelegramInitDataFromWebApp } from './section01/telegramContact';
+import { getTelegramInitDataFromWebApp, notifyTelegramWebAppReady } from './section01/telegramContact';
 import {
   getOperatorSalaryState,
   getOperatorWorkplaceState,
@@ -48,6 +48,10 @@ export function App() {
   const section02Selector = useMemo(() => resolveSection02Selector(), []);
   const [route, setRoute] = useState<AppRoute>({ kind: 'auth' });
   const [startShiftPending, setStartShiftPending] = useState(false);
+
+  useEffect(() => {
+    notifyTelegramWebAppReady();
+  }, []);
 
   const resolvePostAuthRoute = useCallback(async () => {
     try {
