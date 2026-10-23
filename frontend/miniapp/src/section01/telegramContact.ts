@@ -28,6 +28,16 @@ export function getTelegramInitDataFromWebApp(): string | undefined {
   return getTelegramInitDataFromLocationHash();
 }
 
+export function notifyTelegramWebAppReady(): boolean {
+  const webApp = window.Telegram?.WebApp;
+  if (!webApp?.ready) {
+    return false;
+  }
+
+  webApp.ready();
+  return true;
+}
+
 export function getTelegramInitDataFromLocationHash(): string | undefined {
   const hash = window.location.hash.startsWith('#') ? window.location.hash.slice(1) : window.location.hash;
   if (!hash) {
