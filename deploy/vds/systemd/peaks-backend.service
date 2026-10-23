@@ -14,7 +14,8 @@ Environment=PORT=3000
 ExecStartPre=/usr/bin/test -L /srv/the-peaks-factory/current
 ExecStartPre=/usr/bin/test -f /srv/the-peaks-factory/current/release-manifest.json
 ExecStartPre=/usr/bin/test -f /srv/the-peaks-factory/current/backend/dist/src/server.js
-ExecStart=/usr/bin/node /srv/the-peaks-factory/current/backend/dist/src/server.js
+ExecStartPre=/usr/bin/test -x /srv/the-peaks-factory/toolchains/node-v24.22.1-linux-x64/bin/node
+ExecStart=/srv/the-peaks-factory/toolchains/node-v24.22.1-linux-x64/bin/node /srv/the-peaks-factory/current/backend/dist/src/server.js
 Restart=on-failure
 RestartSec=5
 KillSignal=SIGTERM

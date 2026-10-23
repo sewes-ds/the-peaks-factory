@@ -43,7 +43,7 @@ See [Architecture](docs/ARCHITECTURE.md) for the complete boundary description.
 
 ## Technology
 
-- Node.js 20.20 or newer;
+- Node.js 24.22.1 (pinned in `.nvmrc`; installs reject other versions);
 - pnpm 10;
 - TypeScript;
 - Fastify 5;

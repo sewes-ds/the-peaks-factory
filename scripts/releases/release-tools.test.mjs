@@ -90,7 +90,7 @@ test("assembler and installer preserve safe internal artifact symbolic links", (
         tool_ci_run_id: "1",
         legacy_artifact_evidence_sha256: null,
       },
-      toolchain: { node: "20.20.0", pnpm: "10.33.0", postgresql: "16" },
+      toolchain: { node: "24.22.1", pnpm: "10.33.0", postgresql: "16" },
       artifacts: { backend_source: backendRoot, frontend_source: frontendRoot },
       database: { migration_packages: [] },
       verification: {
@@ -190,7 +190,7 @@ test("legacy runtime import separates protected runtime evidence from later rele
         tool_ci_run_id: "2",
         legacy_artifact_evidence_sha256: evidenceSha256,
       },
-      toolchain: { node: "20.20.0", pnpm: "10.33.0", postgresql: "16" },
+      toolchain: { node: "24.22.1", pnpm: "10.33.0", postgresql: "16" },
       artifacts: { backend_source: backendRoot, frontend_source: frontendRoot },
       database: { migration_packages: [] },
       verification: {
@@ -272,7 +272,7 @@ test("assembler rejects artifact symbolic links that escape the artifact tree", 
         tool_ci_run_id: "1",
         legacy_artifact_evidence_sha256: null,
       },
-      toolchain: { node: "20.20.0", pnpm: "10.33.0", postgresql: "16" },
+      toolchain: { node: "24.22.1", pnpm: "10.33.0", postgresql: "16" },
       artifacts: { backend_source: backendRoot, frontend_source: frontendRoot },
       database: { migration_packages: [] },
       verification: {

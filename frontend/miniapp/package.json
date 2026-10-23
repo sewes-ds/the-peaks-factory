@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
+  "engines": {
+    "node": "24.22.1"
+  },
   "scripts": {
     "dev": "vite",
     "build": "pnpm run verify:presentation-contract && tsc --noEmit && vite build && node scripts/assert-peaks-base.mjs",

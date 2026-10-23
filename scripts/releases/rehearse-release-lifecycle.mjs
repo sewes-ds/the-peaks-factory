@@ -50,7 +50,7 @@ function assemblySpec({ root, deploymentRoot, sourceCommit, createdAt, artifacts
       tool_ci_run_id: "123456789",
       legacy_artifact_evidence_sha256: null,
     },
-    toolchain: { node: "20.20.0", pnpm: "10.33.0", postgresql: "16" },
+    toolchain: { node: "24.22.1", pnpm: "10.33.0", postgresql: "16" },
     artifacts: {
       backend_source: artifacts.backend,
       frontend_source: artifacts.frontend,

@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - uses: actions/dependency-review-action@v4
+      - uses: actions/dependency-review-action@v5
 
   repository:
     name: Documentation and repository hygiene
@@ -32,7 +32,7 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-node@v6
         with:
-          node-version: "20.20.0"
+          node-version: "24.22.1"
       - run: node scripts/verify-documentation.mjs
       - run: node scripts/verify-release-contract.mjs --allow-example deploy/releases/release-manifest.example.json
       - run: node --test scripts/verify-release-contract.test.mjs
@@ -81,7 +81,7 @@ jobs:
           version: "10.33.0"
       - uses: actions/setup-node@v6
         with:
-          node-version: "20.20.0"
+          node-version: "24.22.1"
           cache: pnpm
           cache-dependency-path: backend/pnpm-lock.yaml
       - run: pnpm install --frozen-lockfile
@@ -101,7 +101,7 @@ jobs:
           version: "10.33.0"
       - uses: actions/setup-node@v6
         with:
-          node-version: "20.20.0"
+          node-version: "24.22.1"
           cache: pnpm
           cache-dependency-path: |
             frontend/miniapp/pnpm-lock.yaml
