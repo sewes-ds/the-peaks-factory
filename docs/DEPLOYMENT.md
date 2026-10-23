@@ -6,7 +6,7 @@ reviewed release approval.
 
 ## Runtime requirements
 
-- Linux host with Node.js 20.20+, pnpm 10, PostgreSQL 16, nginx, and systemd;
+- Linux host with Node.js 24.22.1, pnpm 10, PostgreSQL 16, nginx, and systemd;
 - a dedicated PostgreSQL runtime role and separate migration/admin authority;
 - TLS for one configured public host;
 - a protected environment file outside Git and outside release directories;
@@ -45,6 +45,11 @@ cd ../admin && pnpm install --frozen-lockfile && pnpm run build
 The release tooling under `scripts/releases/` validates manifests, packages a complete application version,
 checks hashes, installs a never-before-used release ID, and controls atomic activation/rollback. Built
 artifacts, receipts, and backups are intentionally excluded from this repository.
+
+The source and CI Node pin does not upgrade a running service. The example systemd unit still calls
+`/usr/bin/node`; before activating a Node 24 build, the operator must provision and verify the selected
+runtime binary, update the reviewed unit if its path differs, rehearse restart and rollback, and keep
+the previous compatible release. Do not replace a shared system Node binary merely to satisfy the build pin.
 
 ## nginx and systemd
 

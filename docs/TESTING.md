@@ -18,6 +18,16 @@ The last pre-publication run on 15 October 2026 produced these results:
 
 Counts describe the verified publication baseline and may change as tests are added or consolidated.
 
+## Node 24.22.1 source qualification (23 October 2026)
+
+In an isolated checkout of the public `main` baseline, Node 24.22.1 with pnpm 10.33.0 passed
+frozen-lockfile installs, 345 backend tests, 972 Mini App tests, 2 administration tests,
+30 repository/release/tool tests, all three application builds and type checks, both
+domain-portability checks, and the administration browser gate at desktop and mobile widths.
+The PostgreSQL baseline and an actual immutable release/runtime restart were not rerun in this
+qualification. CI on the proposed Node 24 commit and a reviewed production activation remain
+separate requirements; source-level success does not update the running `/usr/bin/node` service.
+
 ## Local gates
 
 Backend contract, security scan, type checking, unit tests, and production build:
