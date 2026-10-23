@@ -57,3 +57,30 @@ test('rejects unsafe deployment paths and unknown placeholders', () => {
     tlsCertificateKey: '/srv/the-peaks-factory/current/forbidden-key.pem'
   }));
 });
+
+test('allows the Mini App only in Telegram Web while keeping admin framing denied', () => {
+  const rendered = renderPeaksNginx({
+    ...common,
+    publicBaseUrl: 'https://app.customer.example/peaks/'
+  });
+  const miniAppLocation = extractLocation(rendered, 'location ^~ /peaks/ {');
+  const adminLocation = extractLocation(rendered, 'location ^~ /admin/ {');
+
+  assert.doesNotMatch(miniAppLocation, /X-Frame-Options/);
+  assert.match(
+    miniAppLocation,
+    /frame-ancestors 'self' https:\/\/web\.telegram\.org;/
+  );
+  assert.doesNotMatch(miniAppLocation, /frame-ancestors \*/);
+
+  assert.match(adminLocation, /X-Frame-Options "DENY"/);
+  assert.match(adminLocation, /frame-ancestors 'none'/);
+});
+
+function extractLocation(rendered, openingLine) {
+  const start = rendered.indexOf(openingLine);
+  assert.notEqual(start, -1, `missing ${openingLine}`);
+  const end = rendered.indexOf('\n    }', start);
+  assert.notEqual(end, -1, `unterminated ${openingLine}`);
+  return rendered.slice(start, end);
+}
