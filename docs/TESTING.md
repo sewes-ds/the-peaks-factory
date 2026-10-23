@@ -26,7 +26,7 @@ frozen-lockfile installs, 345 backend tests, 972 Mini App tests, 2 administratio
 domain-portability checks, and the administration browser gate at desktop and mobile widths.
 The PostgreSQL baseline and an actual immutable release/runtime restart were not rerun in this
 qualification. CI on the proposed Node 24 commit and a reviewed production activation remain
-separate requirements; source-level success does not update the running `/usr/bin/node` service.
+separate requirements; source-level success does not update a running service.
 
 ## Local gates
 

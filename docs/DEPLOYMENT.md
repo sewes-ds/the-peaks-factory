@@ -46,10 +46,11 @@ The release tooling under `scripts/releases/` validates manifests, packages a co
 checks hashes, installs a never-before-used release ID, and controls atomic activation/rollback. Built
 artifacts, receipts, and backups are intentionally excluded from this repository.
 
-The source and CI Node pin does not upgrade a running service. The example systemd unit still calls
-`/usr/bin/node`; before activating a Node 24 build, the operator must provision and verify the selected
-runtime binary, update the reviewed unit if its path differs, rehearse restart and rollback, and keep
-the previous compatible release. Do not replace a shared system Node binary merely to satisfy the build pin.
+The source, CI, and reference systemd unit use Node 24.22.1. Provision the official runtime at the
+versioned `/srv/the-peaks-factory/toolchains/node-v24.22.1-linux-x64/bin/node` path and verify its published
+SHA-256 before staging the unit. Do not replace a shared system Node binary. Keep the previous unit and
+runtime until restart, health, database-role, authentication-denial, TLS/static, and log canaries pass.
+Runtime rollback restores the previous unit as well as the previous immutable application release.
 
 ## nginx and systemd
 
